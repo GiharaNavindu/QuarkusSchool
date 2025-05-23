@@ -10,7 +10,7 @@ public class Student {
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Student_Id",nullable=false, unique=true)
-    private Long studentId;
+    private String studentId;
 
     @Column(name = "First_Name", nullable = false)
     private String firstName;
