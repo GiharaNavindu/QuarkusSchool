@@ -1,11 +1,20 @@
-package org.ironone.model;
+package org.ironone.Entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
+import lombok.*;
+
+
+@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "Enrolls")
-public class Enrolls extends PanacheEntityBase {
+public class Enrolls {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Enrollment_Id")
@@ -55,4 +64,4 @@ public class Enrolls extends PanacheEntityBase {
     private Course course;
 }
 
-}
+

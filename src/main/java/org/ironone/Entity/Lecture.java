@@ -1,9 +1,17 @@
-package org.ironone.model;
+package org.ironone.Entity;
 
 import jakarta.persistence.*;
 import java.time.LocalTime;
 import java.util.List;
 
+import lombok.*;
+
+
+@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "Lecture")
 public class Lecture {

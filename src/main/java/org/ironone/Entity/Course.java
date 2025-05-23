@@ -1,8 +1,16 @@
-package org.ironone.model;
+package org.ironone.Entity;
 
 import jakarta.persistence.*;
 import java.util.List;
 
+import lombok.*;
+
+
+@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "Course")
 public class Course {
