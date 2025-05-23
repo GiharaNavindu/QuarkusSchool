@@ -1,26 +1,60 @@
-//package org.ironone.Resources;
-//
-//
-//import jakarta.transaction.Transactional;
-//import jakarta.ws.rs.POST;
-//import jakarta.ws.rs.Path;
-//import jakarta.ws.rs.core.Response;
-//import org.ironone.Entity.Student;
-//
-//@Path("/student")
-//public class StudenResource {
-//
-//    //POST
-//    @POST
-//    @Transactional
-//
-//    public Response createStudent(Student student) {
-//
-//        return Response.ok(student).status(201).build();
-//    }
-//
-//    public Response updateStudent(Student student) {
-//
-//    }
-//
-//}
+package org.ironone.Resources;
+
+
+import jakarta.enterprise.inject.Produces;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import org.ironone.Entity.Student;
+import org.ironone.service.StudentService;
+
+import java.util.List;
+
+@Path("/student")
+//@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public class StudenResource {
+
+    @Inject
+    StudentService studentService;
+
+    //POST
+    @POST
+    @Transactional
+    public Response createStudent(Student student) {
+        studentService.createStudent(student);
+        return Response.status(Response.Status.CREATED).entity(student).build();
+    }
+
+    @GET
+    @Transactional
+
+    public List<Student> getAllStudent(){
+        studentService.getAllStudents();
+        return studentService.getAllStudents();
+    }
+
+    @GET
+    @Path("/{id}")
+
+    public Student getStudentById(@PathParam("id") String id){
+        studentService.getStudentById(id);
+        return studentService.getStudentById(id);
+    }
+
+    @PUT
+    @Path("/{id}")
+    public Student updateStudent(@PathParam("id") String id, Student updatedStudent){
+        studentService.updateStudent(id, updatedStudent);
+        return studentService.getStudentById(id);
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public Response deleteStudent(@PathParam("id")String id){
+        studentService.deleteStudent(id);
+        return Response.status(Response.Status.NO_CONTENT).entity(id).build();
+    }
+}
