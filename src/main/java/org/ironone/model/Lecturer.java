@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name = "Lecturer")
 public class Lecturer {
     @Id
-    @Column(name = "Lecturer_Id", nullable=false,unique=true)
+    @Column(name = "Lecturer_Id", length=20)
     private String lecturerId;
 
     @Column(name = "First_Name", nullable = false)

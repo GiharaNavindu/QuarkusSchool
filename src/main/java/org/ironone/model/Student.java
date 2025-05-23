@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name = "Student")
 public class Student {
     @Id
-    @Column(name = "Student_Id",nullable=false, unique=true)
+    @Column(name = "Student_Id", length = 20)
     private String studentId;
 
     @Column(name = "First_Name", nullable = false)
@@ -32,12 +32,12 @@ public class Student {
     @Column(name = "Batch")
     private String batch;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "student")
     private List<Enrolls> enrollments;
 
     @ManyToMany
     @JoinTable(
-            name = "Has",
+            name = "Attendance",
             joinColumns = @JoinColumn(name = "Student_Id"),
             inverseJoinColumns = @JoinColumn(name = "Lecture_Id")
     )
