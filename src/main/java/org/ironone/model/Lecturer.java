@@ -8,7 +8,6 @@ import java.util.List;
 @Table(name = "Lecturer")
 public class Lecturer {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Lecturer_Id", nullable=false,unique=true)
     private String lecturerId;
 

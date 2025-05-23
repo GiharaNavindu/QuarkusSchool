@@ -7,7 +7,6 @@ import java.util.List;
 @Table(name = "Course")
 public class Course {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Course_Id", nullable =false,unique=true)
     private String courseId;
 

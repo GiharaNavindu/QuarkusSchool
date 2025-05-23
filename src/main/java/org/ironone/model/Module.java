@@ -7,9 +7,8 @@ import java.util.List;
 @Table(name = "Module")
 public class Module {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Module_Id")
-    private Long moduleId;
+    @Column(name = "Module_Id" nullable=false unique=true)
+    private String moduleId;
 
     @Column(name = "Name", nullable = false)
     private String name;
