@@ -43,25 +43,83 @@ public class Student {
     )
     private List<Lecture> lectures;
 
-    // Getters and Setters
-    public Long getStudentId() { return studentId; }
-    public void setStudentId(Long studentId) { this.studentId = studentId; }
-    public String getFirstName() { return firstName; }
-    public void setFirstName(String firstName) { this.firstName = firstName; }
-    public String getLastName() { return lastName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-    public Integer getAge() { return age; }
-    public void setAge(Integer age) { this.age = age; }
-    public LocalDate getDob() { return dob; }
-    public void setDob(LocalDate dob) { this.dob = dob; }
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
-    public String getBatch() { return batch; }
-    public void setBatch(String batch) { this.batch = batch; }
-    public List<Enrolls> getEnrollments() { return enrollments; }
-    public void setEnrollments(List<Enrolls> enrollments) { this.enrollments = enrollments; }
-    public List<Lecture> getLectures() { return lectures; }
-    public void setLectures(List<Lecture> lectures) { this.lectures = lectures; }
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getBatch() {
+        return batch;
+    }
+
+    public void setBatch(String batch) {
+        this.batch = batch;
+    }
+
+    public List<Enrolls> getEnrollments() {
+        return enrollments;
+    }
+
+    public void setEnrollments(List<Enrolls> enrollments) {
+        this.enrollments = enrollments;
+    }
+
+    public List<Lecture> getLectures() {
+        return lectures;
+    }
+
+    public void setLectures(List<Lecture> lectures) {
+        this.lectures = lectures;
+    }
 }

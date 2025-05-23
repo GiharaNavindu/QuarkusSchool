@@ -7,31 +7,72 @@ import java.util.List;
 @Table(name = "Module")
 public class Module {
     @Id
-    @Column(name = "Module_Id" nullable=false unique=true)
+    @Column(name = "Module_Id", length = 50)
     private String moduleId;
 
     @Column(name = "Name", nullable = false)
     private String name;
 
-    @Column(name = "Number_Of_Credits")
+    @Column(name = "Number_of_Credits")
     private Integer numberOfCredits;
 
     @ManyToOne
-    @JoinColumn(name = "Course_Id", nullable = false)
-    private Course course;
+    @JoinColumn(name = "Lecturer_Id")
+    private Lecturer lecturer;
 
-    @OneToMany(mappedBy = "module", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "modules")
+    private List<Course> courses;
+
+    public String getModuleId() {
+        return moduleId;
+    }
+
+    public void setModuleId(String moduleId) {
+        this.moduleId = moduleId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getNumberOfCredits() {
+        return numberOfCredits;
+    }
+
+    public void setNumberOfCredits(Integer numberOfCredits) {
+        this.numberOfCredits = numberOfCredits;
+    }
+
+    public Lecturer getLecturer() {
+        return lecturer;
+    }
+
+    public void setLecturer(Lecturer lecturer) {
+        this.lecturer = lecturer;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public List<Lecture> getLectures() {
+        return lectures;
+    }
+
+    public void setLectures(List<Lecture> lectures) {
+        this.lectures = lectures;
+    }
+
+    @OneToMany(mappedBy = "module")
     private List<Lecture> lectures;
 
-    // Getters and Setters
-    public Long getModuleId() { return moduleId; }
-    public void setModuleId(Long moduleId) { this.moduleId = moduleId; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public Integer getNumberOfCredits() { return numberOfCredits; }
-    public void setNumberOfCredits(Integer numberOfCredits) { this.numberOfCredits = numberOfCredits; }
-    public Course getCourse() { return course; }
-    public void setCourse(Course course) { this.course = course; }
-    public List<Lecture> getLectures() { return lectures; }
-    public void setLectures(List<Lecture> lectures) { this.lectures = lectures; }
+
 }

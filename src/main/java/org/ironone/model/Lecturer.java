@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name = "Lecturer")
 public class Lecturer {
     @Id
-    @Column(name = "Lecturer_Id", length=20)
+    @Column(name = "Lecturer_Id", length = 20)
     private String lecturerId;
 
     @Column(name = "First_Name", nullable = false)
@@ -29,24 +29,83 @@ public class Lecturer {
     @Column(name = "Degree")
     private String degree;
 
-    @OneToMany(mappedBy = "lecturer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "lecturer")
     private List<Lecture> lectures;
 
-    // Getters and Setters
-    public Long getLecturerId() { return lecturerId; }
-    public void setLecturerId(Long lecturerId) { this.lecturerId = lecturerId; }
-    public String getFirstName() { return firstName; }
-    public void setFirstName(String firstName) { this.firstName = firstName; }
-    public String getLastName() { return lastName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-    public Integer getAge() { return age; }
-    public void setAge(Integer age) { this.age = age; }
-    public LocalDate getDob() { return dob; }
-    public void setDob(LocalDate dob) { this.dob = dob; }
-    public String getDegree() { return degree; }
-    public void setDegree(String degree) { this.degree = degree; }
-    public List<Lecture> getLectures() { return lectures; }
-    public void setLectures(List<Lecture> lectures) { this.lectures = lectures; }
+    public String getLecturerId() {
+        return lecturerId;
+    }
+
+    public void setLecturerId(String lecturerId) {
+        this.lecturerId = lecturerId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+
+    public List<Lecture> getLectures() {
+        return lectures;
+    }
+
+    public void setLectures(List<Lecture> lectures) {
+        this.lectures = lectures;
+    }
+
+    public List<Module> getModules() {
+        return modules;
+    }
+
+    public void setModules(List<Module> modules) {
+        this.modules = modules;
+    }
+
+    @OneToMany(mappedBy = "lecturer")
+    private List<Module> modules;
+
+
 }
