@@ -18,7 +18,7 @@ public class Lecture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Lecture_Id")
-    private Long lectureId;
+    private int lectureId;
 
     @Column(name = "Venue")
     private String venue;
@@ -85,11 +85,11 @@ public class Lecture {
         this.venue = venue;
     }
 
-    public Long getLectureId() {
+    public int getLectureId() {
         return lectureId;
     }
 
-    public void setLectureId(Long lectureId) {
+    public void setLectureId(int lectureId) {
         this.lectureId = lectureId;
     }
 
