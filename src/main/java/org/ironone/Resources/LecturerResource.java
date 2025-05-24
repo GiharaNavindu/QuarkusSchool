@@ -7,54 +7,56 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.ironone.Entity.Lecturer;
 import org.ironone.Entity.Student;
+import org.ironone.service.LecturerService;
 import org.ironone.service.StudentService;
 
 import java.util.List;
 
-@Path("/student")
+@Path("/lecturer")
 //@Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class LecturerResource {
 
     @Inject
-    ;
+    LecturerService lecturerService;
 
     //POST
     @POST
     @Transactional
-    public Response createStudent(Student student) {
-        studentService.createStudent(student);
-        return Response.status(Response.Status.CREATED).entity(student).build();
+    public Response createLecturer(Lecturer lecturer) {
+        LecturerService.createStudent(lecturer);
+        return Response.status(Response.Status.CREATED).entity(lecturer).build();
     }
 
     @GET
     @Transactional
 
     public List<Student> getAllStudent(){
-        studentService.getAllStudents();
-        return studentService.getAllStudents();
+        LecturerService.getAllStudents();
+        return LecturerService.getAllStudents();
     }
 
     @GET
     @Path("/{id}")
 
     public Student getStudentById(@PathParam("id") String id){
-        studentService.getStudentById(id);
-        return studentService.getStudentById(id);
+        LecturerService.getStudentById(id);
+        return LecturerService.getStudentById(id);
     }
 
     @PUT
     @Path("/{id}")
     public Student updateStudent(@PathParam("id") String id, Student updatedStudent){
-        studentService.updateStudent(id, updatedStudent);
-        return studentService.getStudentById(id);
+        LecturerService.updateStudent(id, updatedStudent);
+        return LecturerService.getStudentById(id);
     }
 
     @DELETE
     @Path("/{id}")
     public Response deleteStudent(@PathParam("id")String id){
-        studentService.deleteStudent(id);
+        LecturerService.deleteStudent(id);
         return Response.status(Response.Status.NO_CONTENT).entity(id).build();
     }
 }

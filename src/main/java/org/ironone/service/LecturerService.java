@@ -4,28 +4,27 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.NotFoundException;
-import org.ironone.Entity.Lecturer;
 import org.ironone.Entity.Student;
 import org.ironone.Repository.StudentRepository;
 
 import java.util.List;
 
 @ApplicationScoped
-public class StudentService {
+public class LecturerService {
 
     @Inject
     StudentRepository studentRepository;
 
     @Transactional
-    public void createlecturer(Lecturer lecturer) {
+    public void createStudent(Student student) {
         // Basic validation
-        if (lecturer.getStudentId() == null || lecturer.getStudentId().isEmpty()) {
+        if (student.getStudentId() == null || student.getStudentId().isEmpty()) {
             throw new IllegalArgumentException("Student ID cannot be null or empty");
         }
-        if (lecturer.getEmail() == null || !lecturer.getEmail().contains("@")) {
+        if (student.getEmail() == null || !student.getEmail().contains("@")) {
             throw new IllegalArgumentException("Invalid email address");
         }
-        studentRepository.save(lecturer);
+        studentRepository.save(student);
     }
 
     public List<Student> getAllStudents() {
