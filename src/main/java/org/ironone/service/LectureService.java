@@ -38,7 +38,7 @@ public class LectureService {
     }
 
     @Transactional
-    public void updateLectuer(String id, Lecture updatedLecture) {
+    public void updateLecture(String id, Lecture updatedLecture) {
         Lecture existingLecture = lectureRepository.findById(id);
         if (existingLecture == null) {
             throw new NotFoundException("Student with ID " + id + " not found");
