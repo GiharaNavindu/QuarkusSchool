@@ -20,28 +20,28 @@ public class CourseService {
         if (course.getCourseId() == null || course.getCourseId().isEmpty()) {
             throw new IllegalArgumentException("Course ID cannot be null or empty");
         }
-        if (course.getEmail() == null || !leturer.getEmail().contains("@")) {
-            throw new IllegalArgumentException("Invalid email address");
+        if (course.getName() == null || course.getName().isEmpty()) {
+            throw new IllegalArgumentException("empty Course name");
         }
-        lecturerRepository.save(leturer);
+        courseRepository.save(course);
     }
 
-    public List<Lecturer> getAllLecturers() {
-        return lecturerRepository.findAllLecturers();
+    public List<Course> getAllCourses() {
+        return courseRepository.findAllCourses();
     }
 
-    public Lecturer getLecturerById(String id) {
-        Lecturer lecturer = lecturerRepository.findById(id);
-        if (lecturer == null) {
+    public Course getCourseById(String id) {
+        Course course = courseRepository.findById(id);
+        if (course == null) {
             throw new NotFoundException("Student with ID " + id + " not found");
         }
-        return lecturer;
+        return course;
     }
 
     @Transactional
-    public void updateLecturer(String id, Lecturer updatedLecturer) {
-        Lecturer existingLecturer = lecturerRepository.findById(id);
-        if (existingLecturer == null) {
+    public void updateCoure(String id, Course updatedCourse) {
+        Course existingCourse = courseRepository.findById(id);
+        if (existingCourse == null) {
             throw new NotFoundException("Student with ID " + id + " not found");
 
         }
@@ -53,15 +53,21 @@ public class CourseService {
 //        existingLecturer.setAddress(updatedStudent.getAddress());
 //        existingLecturer.setBatch(updatedStudent.getBatch());
 //        existingLecturer.update(existingLecturer);
+
+        existingCourse.setName(updatedCourse.getName());
+        existingCourse.setDuration(updatedCourse.getDuration());
+        existingCourse.setModules(updatedCourse.getModules());
+        existingCourse.setEnrollments(updatedCourse.getEnrollments());
+        courseRepository.update(existingCourse);
     }
 
     @Transactional
     public void deleteLecturer(String id) {
-        Lecturer lecturer = lecturerRepository.findById(id);
-        if (lecturer == null) {
-            throw new NotFoundException("Student with ID " + id + " not found");
+        Course course = courseRepository.findById(id);
+        if (course == null) {
+            throw new NotFoundException("Course with ID " + id + " not found");
         }
-        lecturerRepository.delete(id);
+        courseRepository.delete(id);
     }
 
 }
