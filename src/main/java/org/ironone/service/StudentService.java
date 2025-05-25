@@ -46,14 +46,14 @@ public class StudentService {
             throw new NotFoundException("Student with ID " + id + " not found");
 
         }
-//        existingStudent.setFirstName(updatedStudent.getFirstName());
-//        existingStudent.setLastName(updatedStudent.getLastName());
-//        existingStudent.setEmail(updatedStudent.getEmail());
-//        existingStudent.setAge(updatedStudent.getAge());
-//        existingStudent.setDob(updatedStudent.getDob());
-//        existingStudent.setAddress(updatedStudent.getAddress());
-//        existingStudent.setBatch(updatedStudent.getBatch());
-//        studentRepository.update(existingStudent);
+        existingStudent.setFirstName(updatedStudent.getFirstName());
+        existingStudent.setLastName(updatedStudent.getLastName());
+        existingStudent.setEmail(updatedStudent.getEmail());
+        existingStudent.setAge(updatedStudent.getAge());
+        existingStudent.setDob(updatedStudent.getDob());
+        existingStudent.setAddress(updatedStudent.getAddress());
+        existingStudent.setBatch(updatedStudent.getBatch());
+        studentRepository.update(existingStudent);
     }
 
     @Transactional
