@@ -47,7 +47,7 @@ public class CourseResource {
     @DELETE
     @Path("/{id}")
     public Response deleteCourse(@PathParam("id")String id){
-        courseService.deleteCourseg(id);
+        courseService.deleteCourse(id);
         return Response.status(Response.Status.NO_CONTENT).entity(id).build();
     }
 }
