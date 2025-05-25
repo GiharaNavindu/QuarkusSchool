@@ -1,7 +1,6 @@
 package org.ironone.Resources;
 
 
-import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
@@ -10,7 +9,6 @@ import jakarta.ws.rs.core.Response;
 import org.ironone.Entity.Lecturer;
 import org.ironone.Entity.Student;
 import org.ironone.service.LecturerService;
-import org.ironone.service.StudentService;
 
 import java.util.List;
 
@@ -26,37 +24,37 @@ public class LecturerResource {
     @POST
     @Transactional
     public Response createLecturer(Lecturer lecturer) {
-        LecturerService.create(lecturer);
+        lecturerService.createLecturer(lecturer);
         return Response.status(Response.Status.CREATED).entity(lecturer).build();
     }
 
     @GET
     @Transactional
 
-    public List<Student> getAllStudent(){
-        LecturerService.getAllStudents();
-        return LecturerService.getAllStudents();
+    public List<Lecturer> getAllLecturers(){
+        lecturerService.getAllLecturers();
+        return lecturerService.getAllLecturers();
     }
 
     @GET
     @Path("/{id}")
 
-    public Student getStudentById(@PathParam("id") String id){
-        LecturerService.getStudentById(id);
-        return LecturerService.getStudentById(id);
+    public Lecturer getLecturerById(@PathParam("id") String id){
+        lecturerService.getLecturerById(id);
+        return lecturerService.getLecturerById(id);
     }
 
     @PUT
     @Path("/{id}")
-    public Student updateStudent(@PathParam("id") String id, Student updatedStudent){
-        LecturerService.updateStudent(id, updatedStudent);
-        return LecturerService.getStudentById(id);
+    public Lecturer updateLecturer(@PathParam("id") String id, Lecturer updatedLecturer){
+        lecturerService.updateLecturer(id, updatedLecturer);
+        return lecturerService.getLecturerById(id);
     }
 
     @DELETE
     @Path("/{id}")
-    public Response deleteStudent(@PathParam("id")String id){
-        LecturerService.deleteStudent(id);
+    public Response deleteLecturer(@PathParam("id")String id){
+        lecturerService.deleteLecturer(id);
         return Response.status(Response.Status.NO_CONTENT).entity(id).build();
     }
 }

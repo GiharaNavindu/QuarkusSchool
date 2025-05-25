@@ -43,7 +43,7 @@ public class LecturerService {
     }
 
     @Transactional
-    public void updateStudent(String id, Student updatedStudent) {
+    public void updateLecturer(String id, Lecturer updatedLecturer) {
         Lecturer existingLecturer = lecturerRepository.findById(id);
         if (existingLecturer == null) {
             throw new NotFoundException("Student with ID " + id + " not found");
@@ -60,7 +60,7 @@ public class LecturerService {
     }
 
     @Transactional
-    public void deleteStudent(String id) {
+    public void deleteLecturer(String id) {
         Lecturer lecturer = lecturerRepository.findById(id);
         if (lecturer == null) {
             throw new NotFoundException("Student with ID " + id + " not found");
