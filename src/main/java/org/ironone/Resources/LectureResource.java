@@ -5,7 +5,6 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 import org.ironone.Entity.Lecture;
-import org.ironone.Entity.Lecturer;
 import org.ironone.service.LectureService;
 
 import java.util.List;
