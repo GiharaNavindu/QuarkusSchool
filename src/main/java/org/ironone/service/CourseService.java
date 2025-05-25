@@ -62,7 +62,7 @@ public class CourseService {
     }
 
     @Transactional
-    public void deleteLecturer(String id) {
+    public void deleteCourse(String id) {
         Course course = courseRepository.findById(id);
         if (course == null) {
             throw new NotFoundException("Course with ID " + id + " not found");
