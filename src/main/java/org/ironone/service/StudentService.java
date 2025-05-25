@@ -4,7 +4,6 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.NotFoundException;
-import org.ironone.Entity.Lecturer;
 import org.ironone.Entity.Student;
 import org.ironone.Repository.StudentRepository;
 
@@ -17,15 +16,15 @@ public class StudentService {
     StudentRepository studentRepository;
 
     @Transactional
-    public void createlecturer(Lecturer lecturer) {
+    public void createStudent(Student student) {
         // Basic validation
-        if (lecturer.getStudentId() == null || lecturer.getStudentId().isEmpty()) {
+        if (student.getStudentId() == null || student.getStudentId().isEmpty()) {
             throw new IllegalArgumentException("Student ID cannot be null or empty");
         }
-        if (lecturer.getEmail() == null || !lecturer.getEmail().contains("@")) {
+        if (student.getEmail() == null || !student.getEmail().contains("@")) {
             throw new IllegalArgumentException("Invalid email address");
         }
-        studentRepository.save(lecturer);
+        studentRepository.save(student);
     }
 
     public List<Student> getAllStudents() {
@@ -47,14 +46,14 @@ public class StudentService {
             throw new NotFoundException("Student with ID " + id + " not found");
 
         }
-        existingStudent.setFirstName(updatedStudent.getFirstName());
-        existingStudent.setLastName(updatedStudent.getLastName());
-        existingStudent.setEmail(updatedStudent.getEmail());
-        existingStudent.setAge(updatedStudent.getAge());
-        existingStudent.setDob(updatedStudent.getDob());
-        existingStudent.setAddress(updatedStudent.getAddress());
-        existingStudent.setBatch(updatedStudent.getBatch());
-        studentRepository.update(existingStudent);
+//        existingStudent.setFirstName(updatedStudent.getFirstName());
+//        existingStudent.setLastName(updatedStudent.getLastName());
+//        existingStudent.setEmail(updatedStudent.getEmail());
+//        existingStudent.setAge(updatedStudent.getAge());
+//        existingStudent.setDob(updatedStudent.getDob());
+//        existingStudent.setAddress(updatedStudent.getAddress());
+//        existingStudent.setBatch(updatedStudent.getBatch());
+//        studentRepository.update(existingStudent);
     }
 
     @Transactional

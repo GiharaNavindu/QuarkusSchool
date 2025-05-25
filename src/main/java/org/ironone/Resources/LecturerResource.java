@@ -26,7 +26,7 @@ public class LecturerResource {
     @POST
     @Transactional
     public Response createLecturer(Lecturer lecturer) {
-        LecturerService.createStudent(lecturer);
+        LecturerService.create(lecturer);
         return Response.status(Response.Status.CREATED).entity(lecturer).build();
     }
 
