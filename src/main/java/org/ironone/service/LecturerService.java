@@ -4,11 +4,9 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.NotFoundException;
-import org.ironone.Entity.Lecture;
 import org.ironone.Entity.Lecturer;
-import org.ironone.Entity.Student;
 import org.ironone.Repository.LecturerRepository;
-import org.ironone.Repository.StudentRepository;
+
 
 import java.util.List;
 
