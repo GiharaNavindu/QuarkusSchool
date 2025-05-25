@@ -27,7 +27,7 @@ public class LecturerService {
         if (leturer.getEmail() == null || !leturer.getEmail().contains("@")) {
             throw new IllegalArgumentException("Invalid email address");
         }
-        LecturerRepository.save(leturer);
+        lecturerRepository.save(leturer);
     }
 
     public List<Lecturer> getAllLecturers() {
