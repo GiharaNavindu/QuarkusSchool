@@ -1,7 +1,7 @@
-package org.ironone.Repository;
+package org.ironone.repository;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
-import org.ironone.Entity.Lecture;
+import org.ironone.entity.Lecture;
 
 import java.util.List;
 

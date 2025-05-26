@@ -1,20 +1,19 @@
-package org.ironone.Resources;
+package org.ironone.resources;
 
 
-import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.ironone.Entity.Student;
+import org.ironone.entity.Student;
 import org.ironone.service.StudentService;
 
 import java.util.List;
 
 @Path("/api/student")
-//@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@jakarta.ws.rs.Produces(MediaType.APPLICATION_JSON)
+@jakarta.ws.rs.Consumes(MediaType.APPLICATION_JSON)
 public class StudenResource {
 
     @Inject

@@ -1,8 +1,7 @@
-package org.ironone.Entity;
+package org.ironone.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 import lombok.*;
 

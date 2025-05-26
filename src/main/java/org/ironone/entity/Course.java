@@ -1,4 +1,4 @@
-package org.ironone.Entity;
+package org.ironone.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

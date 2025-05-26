@@ -1,4 +1,4 @@
-package org.ironone.Resources;
+package org.ironone.resources;
 
 
 import jakarta.inject.Inject;
@@ -6,8 +6,7 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.ironone.Entity.Lecturer;
-import org.ironone.Entity.Student;
+import org.ironone.entity.Lecturer;
 import org.ironone.service.LecturerService;
 
 import java.util.List;

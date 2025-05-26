@@ -1,4 +1,4 @@
-package org.ironone.Entity;
+package org.ironone.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

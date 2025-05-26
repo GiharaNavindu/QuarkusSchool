@@ -1,4 +1,4 @@
-package org.ironone.Entity;
+package org.ironone.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDate;
@@ -38,6 +38,10 @@ public class Student {
 
     @Column(name = "Batch")
     private String batch;
+
+
+//    @Column(name = "User_Id", nullable = false, unique=true)
+//    private String userId;
 
     @JsonIgnore
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)

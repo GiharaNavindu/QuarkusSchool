@@ -1,4 +1,4 @@
-package org.ironone.Entity;
+package org.ironone.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -36,6 +36,9 @@ public class Lecturer {
 
     @Column(name = "Degree")
     private String degree;
+
+//    @Column(name = "User_Id", nullable = false, unique=true)
+//    private String userId;
 
     @OneToMany(mappedBy = "lecturer")
     @JsonIgnore
