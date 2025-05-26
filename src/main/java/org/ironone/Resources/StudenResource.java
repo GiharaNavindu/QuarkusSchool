@@ -12,7 +12,7 @@ import org.ironone.service.StudentService;
 
 import java.util.List;
 
-@Path("api/student")
+@Path("/api/student")
 //@Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class StudenResource {

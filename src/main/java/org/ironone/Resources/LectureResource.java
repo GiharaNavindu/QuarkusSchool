@@ -12,7 +12,7 @@ import javax.print.attribute.standard.Media;
 import java.util.List;
 
 
-@Path("api/lecture")
+@Path("/api/lecture")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class LectureResource {
