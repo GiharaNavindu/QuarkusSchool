@@ -1,5 +1,6 @@
 package org.ironone.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -37,9 +38,11 @@ public class Lecturer {
     private String degree;
 
     @OneToMany(mappedBy = "lecturer")
+    @JsonIgnore
     private List<Lecture> lectures;
 
     @OneToMany(mappedBy = "lecturer")
+    @JsonIgnore
     private List<Module> modules;
 
 

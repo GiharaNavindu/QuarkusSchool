@@ -1,5 +1,6 @@
 package org.ironone.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class Course {
     @Column(name = "Duration")
     private Integer duration;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "course")
     private List<Enrolls> enrollments;
 
@@ -73,6 +75,7 @@ public class Course {
             joinColumns = @JoinColumn(name = "Course_Id"),
             inverseJoinColumns = @JoinColumn(name = "Module_Id")
     )
+    @JsonIgnore
     private List<Module> modules;
 
 
