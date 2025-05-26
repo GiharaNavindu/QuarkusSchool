@@ -41,7 +41,7 @@ public class CourseService {
     }
 
     @Transactional
-    public void updateCoure(String id, Course updatedCourse) {
+    public void updateCourse(String id, Course updatedCourse) {
         Course existingCourse = courseRepository.findById(id);
         if (existingCourse == null) {
             throw new NotFoundException("Student with ID " + id + " not found");

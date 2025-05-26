@@ -10,7 +10,7 @@ import java.util.List;
 @ApplicationScoped
 public class CourseRepository implements PanacheRepository<Course> {
     public Course findById(String id) {
-        return find("CourseId", id).firstResult();
+        return find("courseId", id).firstResult();
     }
 
     // Method to retrieve all lectures

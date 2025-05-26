@@ -41,8 +41,8 @@ public class CourseResource {
 
     @PUT
     @Path("/{id}")
-    public Course updateCoourse(@PathParam("id") String id, Course updatedCourse){
-        courseService.updateCoure(id, updatedCourse);
+    public Course updateCourse(@PathParam("id") String id, Course updatedCourse){
+        courseService.updateCourse(id, updatedCourse);
         return courseService.getCourseById(id);
     }
 
