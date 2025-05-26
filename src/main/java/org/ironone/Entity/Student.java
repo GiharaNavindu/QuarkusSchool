@@ -1,5 +1,5 @@
 package org.ironone.Entity;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -39,7 +39,8 @@ public class Student {
     @Column(name = "Batch")
     private String batch;
 
-    @OneToMany(mappedBy = "student")
+    @JsonIgnore
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
     private List<Enrolls> enrollments;
 
     @ManyToMany
@@ -48,6 +49,8 @@ public class Student {
             joinColumns = @JoinColumn(name = "Student_Id"),
             inverseJoinColumns = @JoinColumn(name = "Lecture_Id")
     )
+
+    @JsonIgnore
     private List<Lecture> lectures;
 
 
