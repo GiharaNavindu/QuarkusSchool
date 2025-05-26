@@ -13,7 +13,7 @@ import org.ironone.service.LecturerService;
 import java.util.List;
 
 @Path("/lecturer")
-//@Produces(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class LecturerResource {
 
