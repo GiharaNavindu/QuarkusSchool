@@ -30,7 +30,6 @@ public class StudenResource {
 
     @GET
     @Transactional
-
     public List<Student> getAllStudent(){
         studentService.getAllStudents();
         return studentService.getAllStudents();
