@@ -1,5 +1,6 @@
 package org.ironone.service;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.NotFoundException;
@@ -8,6 +9,8 @@ import org.ironone.Repository.EnrolllsRepository;
 
 import java.util.List;
 
+
+@ApplicationScoped
 public class EnrollService {
     @Inject
     EnrolllsRepository enrolllsRepository;

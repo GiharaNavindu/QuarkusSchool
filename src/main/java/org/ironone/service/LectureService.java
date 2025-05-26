@@ -1,5 +1,6 @@
 package org.ironone.service;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.NotFoundException;
@@ -10,6 +11,8 @@ import org.ironone.Repository.LectureRepository;
 
 import java.util.List;
 
+
+@ApplicationScoped
 public class LectureService {
 
     @Inject
