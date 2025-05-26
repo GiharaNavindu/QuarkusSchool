@@ -1,9 +1,12 @@
 package org.ironone.Repository;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import jakarta.enterprise.context.ApplicationScoped;
 import org.ironone.Entity.Lecture;
 
 import java.util.List;
 
+
+@ApplicationScoped
 public class LectureRepository implements PanacheRepository<Lecture>{
     // Method to find a lecture by its ID
     public Lecture findById(String id) {

@@ -1,9 +1,12 @@
 package org.ironone.Repository;
+import jakarta.enterprise.context.ApplicationScoped;
 import org.ironone.Entity.Enrolls;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import java.util.List;
 
+
+@ApplicationScoped
 public class EnrolllsRepository implements PanacheRepository<Enrolls> {
 
     // Method to find an enrollment by its ID

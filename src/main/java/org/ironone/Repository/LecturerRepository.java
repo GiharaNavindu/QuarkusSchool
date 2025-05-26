@@ -1,10 +1,13 @@
 package org.ironone.Repository;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import jakarta.enterprise.context.ApplicationScoped;
 import org.ironone.Entity.Lecturer;
 
 import java.util.List;
 
+
+@ApplicationScoped
 public class LecturerRepository  implements PanacheRepository<Lecturer> {
 
     // Method to find a lecturer by their ID

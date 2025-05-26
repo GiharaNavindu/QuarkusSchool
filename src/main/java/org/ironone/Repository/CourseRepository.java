@@ -1,10 +1,13 @@
 package org.ironone.Repository;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import jakarta.enterprise.context.ApplicationScoped;
 import org.ironone.Entity.Course;
 
 import java.util.List;
 
+
+@ApplicationScoped
 public class CourseRepository implements PanacheRepository<Course> {
     public Course findById(String id) {
         return find("CourseId", id).firstResult();
