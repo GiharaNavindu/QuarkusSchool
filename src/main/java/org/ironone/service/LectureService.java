@@ -4,6 +4,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.NotFoundException;
+import org.ironone.dto.UpcomingLecture;
 import org.ironone.entity.Lecture;
 import org.ironone.repository.LectureRepository;
 
@@ -64,7 +65,7 @@ public class LectureService {
         lectureRepository.delete(id);
     }
 
-    public List<LectureRepository.UpcomingLecture> getUpcomingLecturesByStudentId(String studentId) {
+    public List<UpcomingLecture> getUpcomingLecturesByStudentId(String studentId) {
         return lectureRepository.findUpcomingLecturesByStudentId(studentId);
     }
 }

@@ -1,10 +1,12 @@
 package org.ironone.resources;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.ironone.dto.UpcomingLecture;
 import org.ironone.entity.Lecture;
 import org.ironone.repository.LectureRepository;
 import org.ironone.service.LectureService;
@@ -15,6 +17,7 @@ import java.util.List;
 @Path("/api/lecture")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@ApplicationScoped
 public class LectureResource {
 
     @Inject
@@ -59,7 +62,7 @@ public class LectureResource {
 
     @GET
     @Path("/student/{studentId}/upcoming")
-    public List<LectureRepository.UpcomingLecture> getUpcomingLecturesByStudentId(@PathParam("studentId") String studentId) {
+    public List<UpcomingLecture> getUpcomingLecturesByStudentId(@PathParam("studentId") String studentId) {
         return lectureService.getUpcomingLecturesByStudentId(studentId);
     }
 }

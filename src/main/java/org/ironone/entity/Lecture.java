@@ -2,6 +2,9 @@ package org.ironone.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.sql.Time;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -28,7 +31,7 @@ public class Lecture {
     private Integer attendanceCount;
 
     @Column(name = "Time", nullable = false)
-    private LocalTime time;
+    private LocalDateTime time;
 
     @ManyToOne
     @JoinColumn(name = "Lecturer_Id")

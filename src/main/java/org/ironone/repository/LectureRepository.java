@@ -6,6 +6,7 @@ import org.ironone.entity.Lecture;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.ironone.dto.UpcomingLecture;
 
 
 @ApplicationScoped
@@ -48,19 +49,7 @@ public class LectureRepository implements PanacheRepository<Lecture>{
         }).collect(Collectors.toList());
     }
 
-    public class UpcomingLecture {
-        private int lectureId;
-        private String moduleName;
-        private String venue;
-        private String time;
 
-        public int getLectureId() { return lectureId; }
-        public void setLectureId(int lectureId) { this.lectureId = lectureId; }
-        public String getModuleName() { return moduleName; }
-        public void setModuleName(String moduleName) { this.moduleName = moduleName; }
-        public String getVenue() { return venue; }
-        public void setVenue(String venue) { this.venue = venue; }
-        public String getTime() { return time; }
-        public void setTime(String time) { this.time = time; }
-    }
 }
+
+

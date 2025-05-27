@@ -6,7 +6,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import org.ironone.repository.AttendanceData;
+import org.ironone.dto.AttendanceData;
 import org.ironone.service.AttendanceService;
 
 import java.util.List;

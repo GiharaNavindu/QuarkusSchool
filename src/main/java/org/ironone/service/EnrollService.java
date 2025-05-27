@@ -59,4 +59,8 @@ public class EnrollService {
         }
         enrolllsRepository.delete(id);
     }
+
+    public List<Enrolls> getEnrollmentsByStudentId(String studentId) {
+        return enrolllsRepository.find("student.studentId = ?1", studentId).list();
+    }
 }

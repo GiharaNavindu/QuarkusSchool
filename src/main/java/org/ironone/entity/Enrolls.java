@@ -2,6 +2,7 @@ package org.ironone.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.Properties;
 
 import lombok.*;
 
@@ -29,6 +30,8 @@ public class Enrolls {
     @ManyToOne
     @JoinColumn(name = "Course_Id")
     private Course course;
+
+
 }
 
 

@@ -29,8 +29,6 @@ public class Module {
     @ManyToMany(mappedBy = "modules")
     private List<Course> courses;
 
-
-
     @OneToMany(mappedBy = "module")
     private List<Lecture> lectures;
 

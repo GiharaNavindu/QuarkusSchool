@@ -55,4 +55,10 @@ public class EnrollsResource {
         return Response.status(Response.Status.NO_CONTENT).entity(id).build();
     }
 
+    @GET
+    @Path("/student/{studentId}")
+    public List<Enrolls> getEnrollmentsByStudentId(@PathParam("studentId") String studentId) {
+        return enrollsService.getEnrollmentsByStudentId(studentId);
+    }
+
 }

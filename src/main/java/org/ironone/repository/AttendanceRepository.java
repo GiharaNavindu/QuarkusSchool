@@ -3,19 +3,25 @@ package org.ironone.repository;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import org.ironone.dto.AttendanceData;
 import org.ironone.entity.Lecture;
 import org.ironone.entity.Module;
-
+import org.ironone.repository.ModuleRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class AttendanceRepository implements PanacheRepository<Lecture> {
 
+    @Inject
+    @ApplicationScoped
+    ModuleRepository moduleRepository;
+
     public List<AttendanceData> findAttendanceByStudentId(String studentId) {
-        List<Module> modules = Module.<Module>find("select distinct m from Module m join m.lectures l join l.students s where s.studentId = ?1", studentId).list();
+        List<Module> modules = moduleRepository.find("select distinct m from Module m join m.lectures l join l.students s where s.studentId = ?1", studentId).list();
         return modules.stream().map(module -> {
-            List<Lecture> lectures = Lecture.find("module = ?1", module).list();
+            List<Lecture> lectures = find("module = ?1", module).list();
             long attended = lectures.stream().filter(lecture -> lecture.getStudents().stream().anyMatch(s -> s.getStudentId().equals(studentId))).count();
             AttendanceData data = new AttendanceData();
             data.setModuleId(module.getModuleId());
@@ -27,18 +33,3 @@ public class AttendanceRepository implements PanacheRepository<Lecture> {
     }
 }
 
-public class AttendanceData {
-    private String moduleId;
-    private String moduleName;
-    private int attendedLectures;
-    private int totalLectures;
-
-    public String getModuleId() { return moduleId; }
-    public void setModuleId(String moduleId) { this.moduleId = moduleId; }
-    public String getModuleName() { return moduleName; }
-    public void setModuleName(String moduleName) { this.moduleName = moduleName; }
-    public int getAttendedLectures() { return attendedLectures; }
-    public void setAttendedLectures(int attendedLectures) { this.attendedLectures = attendedLectures; }
-    public int getTotalLectures() { return totalLectures; }
-    public void setTotalLectures(int totalLectures) { this.totalLectures = totalLectures; }
-}

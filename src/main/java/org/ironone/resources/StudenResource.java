@@ -7,7 +7,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.ironone.entity.Student;
-import org.ironone.service.ProgressData;
+import org.ironone.dto.ProgressData;
 import org.ironone.service.StudentService;
 
 import java.util.List;

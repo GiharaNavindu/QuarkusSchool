@@ -2,7 +2,8 @@ package org.ironone.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import org.ironone.repository.AttendanceData;
+
+import org.ironone.dto.AttendanceData;
 import org.ironone.repository.AttendanceRepository;
 
 import java.util.List;
