@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.NotFoundException;
 import org.ironone.entity.Student;
 import org.ironone.repository.StudentRepository;
+import org.ironone.entity.Enrolls;
 
 import java.util.List;
 
@@ -64,4 +65,28 @@ public class StudentService {
         }
         studentRepository.delete(id);
     }
+
+    public ProgressData getStudentProgress(String studentId) {
+        Student student = getStudentById(studentId);
+        List<Enrolls> enrollments = Enrolls.<Enrolls>find("student.studentId = ?1", studentId).list();
+        int completedCredits = enrollments.stream()
+                .flatMap(enroll -> enroll.getCourse().getModules().stream())
+                .mapToInt(module -> module.getNumberOfCredits() != null ? module.getNumberOfCredits() : 0)
+                .sum();
+        ProgressData progress = new ProgressData();
+        progress.setCompletedCredits(completedCredits);
+        progress.setTotalCredits(120); // Assuming 120 credits for degree completion
+        return progress;
+    }
 }
+
+public class ProgressData {
+    private int completedCredits;
+    private int totalCredits;
+
+    public int getCompletedCredits() { return completedCredits; }
+    public void setCompletedCredits(int completedCredits) { this.completedCredits = completedCredits; }
+    public int getTotalCredits() { return totalCredits; }
+    public void setTotalCredits(int totalCredits) { this.totalCredits = totalCredits; }
+}
+

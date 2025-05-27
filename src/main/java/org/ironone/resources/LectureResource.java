@@ -6,6 +6,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.ironone.entity.Lecture;
+import org.ironone.repository.LectureRepository;
 import org.ironone.service.LectureService;
 
 import java.util.List;
@@ -53,5 +54,12 @@ public class LectureResource {
     public Response deleteLecture(@PathParam("id")String id){
         lectureService.deleteLecture(id);
         return Response.status(Response.Status.NO_CONTENT).entity(id).build();
+    }
+
+
+    @GET
+    @Path("/student/{studentId}/upcoming")
+    public List<LectureRepository.UpcomingLecture> getUpcomingLecturesByStudentId(@PathParam("studentId") String studentId) {
+        return lectureService.getUpcomingLecturesByStudentId(studentId);
     }
 }

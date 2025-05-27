@@ -63,4 +63,8 @@ public class LectureService {
         }
         lectureRepository.delete(id);
     }
+
+    public List<LectureRepository.UpcomingLecture> getUpcomingLecturesByStudentId(String studentId) {
+        return lectureRepository.findUpcomingLecturesByStudentId(studentId);
+    }
 }

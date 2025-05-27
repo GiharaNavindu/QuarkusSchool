@@ -7,6 +7,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.ironone.entity.Student;
+import org.ironone.service.ProgressData;
 import org.ironone.service.StudentService;
 
 import java.util.List;
@@ -54,5 +55,12 @@ public class StudenResource {
     public Response deleteStudent(@PathParam("id")String id){
         studentService.deleteStudent(id);
         return Response.status(Response.Status.NO_CONTENT).entity(id).build();
+    }
+
+
+    @GET
+    @Path("/{id}/progress")
+    public ProgressData getStudentProgress(@PathParam("id") String id) {
+        return studentService.getStudentProgress(id);
     }
 }

@@ -3,7 +3,9 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import org.ironone.entity.Lecture;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @ApplicationScoped
@@ -31,5 +33,34 @@ public class LectureRepository implements PanacheRepository<Lecture>{
     // Method to delete a lecture by its ID
     public void delete(String id) {
         delete("lectureId", id);
+    }
+
+    public List<UpcomingLecture> findUpcomingLecturesByStudentId(String studentId) {
+        LocalDateTime now = LocalDateTime.now();
+        List<Lecture> lectures = find("select l from Lecture l join l.students s where s.studentId = ?1 and l.time > ?2", studentId, now).list();
+        return lectures.stream().map(lecture -> {
+            UpcomingLecture upcoming = new UpcomingLecture();
+            upcoming.setLectureId(lecture.getLectureId());
+            upcoming.setModuleName(lecture.getModule().getName());
+            upcoming.setVenue(lecture.getVenue());
+            upcoming.setTime(lecture.getTime().toString());
+            return upcoming;
+        }).collect(Collectors.toList());
+    }
+
+    public class UpcomingLecture {
+        private int lectureId;
+        private String moduleName;
+        private String venue;
+        private String time;
+
+        public int getLectureId() { return lectureId; }
+        public void setLectureId(int lectureId) { this.lectureId = lectureId; }
+        public String getModuleName() { return moduleName; }
+        public void setModuleName(String moduleName) { this.moduleName = moduleName; }
+        public String getVenue() { return venue; }
+        public void setVenue(String venue) { this.venue = venue; }
+        public String getTime() { return time; }
+        public void setTime(String time) { this.time = time; }
     }
 }
