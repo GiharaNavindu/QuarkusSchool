@@ -1,35 +1,46 @@
 package org.ironone.repository;
+
+import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import io.quarkus.panache.common.Parameters;
+import io.quarkus.panache.common.Sort;
 import jakarta.enterprise.context.ApplicationScoped;
 import org.ironone.entity.Enrolls;
-import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import java.util.List;
 
-
 @ApplicationScoped
 public class EnrolllsRepository implements PanacheRepository<Enrolls> {
-
-    // Method to find an enrollment by its ID
     public Enrolls findById(Long id) {
         return find("enrollmentId", id).firstResult();
     }
 
-    // Method to retrieve all enrollments
-    public List<Enrolls> findAllEnrollments() {
-        return listAll();
+    public List<Enrolls> findAllEnrollments(int offset, int limit, String sortBy, String sortDir, String filterCourseName) {
+        Sort sort = Sort.by(sortBy == null ? "enrollmentDate" : sortBy, sortDir != null && sortDir.equalsIgnoreCase("desc") ? Sort.Direction.Descending : Sort.Direction.Ascending);
+        if (filterCourseName != null && !filterCourseName.isEmpty()) {
+            return find("course.name like :name", sort, Parameters.with("name", "%" + filterCourseName + "%")).page(offset / limit, limit).list();
+        }
+        return findAll(sort).page(offset / limit, limit).list();
     }
 
-    // Method to save a new enrollment
-    public void save(Enrolls enrolls) {
-        persist(enrolls);
+    public long countEnrollments(String filterCourseName) {
+        if (filterCourseName != null && !filterCourseName.isEmpty()) {
+            return count("course.name like ?1", "%" + filterCourseName + "%");
+        }
+        return count();
     }
 
-    // Method to update an existing enrollment
-    public void update(Enrolls enrolls) {
-        persist(enrolls);
+    public List<Enrolls> findByStudentId(String studentId) {
+        return find("student.studentId = ?1", studentId).list();
     }
 
-    // Method to delete an enrollment by its ID
+    public void save(Enrolls enroll) {
+        persist(enroll);
+    }
+
+    public void update(Enrolls enroll) {
+        persist(enroll);
+    }
+
     public void delete(Long id) {
         delete("enrollmentId", id);
     }

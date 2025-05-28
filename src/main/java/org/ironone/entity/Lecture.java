@@ -2,14 +2,13 @@ package org.ironone.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
-import java.sql.Time;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 import lombok.*;
-
 
 @Data
 @Getter
@@ -25,29 +24,29 @@ public class Lecture {
     private int lectureId;
 
     @Column(name = "Venue")
+    @Size(max = 100, message = "Venue must be at most 100 characters")
     private String venue;
 
-    @Column(name = "Attendance_Count")
-    private Integer attendanceCount;
-
     @Column(name = "Time", nullable = false)
-    private LocalDateTime time;
+    @NotBlank(message = "Time is required")
+    private String time;
 
     @ManyToOne
-    @JoinColumn(name = "Lecturer_Id")
+    @JoinColumn(name = "Lecturer")
+    @NotNull(message = "Lecturer is required")
     private Lecturer lecturer;
 
     @ManyToOne
     @JoinColumn(name = "Module_Id")
+    @NotNull(message = "Module is required")
     private Module module;
 
-
-
-
-
-    @ManyToMany(mappedBy = "lectures")
     @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "Lecture_Student",
+            joinColumns = @JoinColumn(name = "Lecture_Id"),
+            inverseJoinColumns = @JoinColumn(name = "Student_Id")
+    )
     private List<Student> students;
-
-
 }

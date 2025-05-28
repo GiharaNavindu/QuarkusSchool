@@ -1,11 +1,10 @@
 package org.ironone.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.Properties;
 
 import lombok.*;
-
 
 @Data
 @Getter
@@ -20,18 +19,16 @@ public class Enrolls {
     @Column(name = "Enrollment_Id")
     private Long enrollmentId;
 
-    @Column(name = "Enrollment_Date", nullable = false)
-    private LocalDate enrollmentDate;
+    @Column(name = "Enrollment_Date")
+    private String enrollmentDate;
 
     @ManyToOne
     @JoinColumn(name = "Student_Id")
+    @NotNull(message = "Student is required")
     private Student student;
 
     @ManyToOne
     @JoinColumn(name = "Course_Id")
+    @NotNull(message = "Course is required")
     private Course course;
-
-
 }
-
-
