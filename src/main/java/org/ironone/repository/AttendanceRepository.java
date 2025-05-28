@@ -9,7 +9,7 @@ import org.ironone.entity.Lecture;
 import org.ironone.entity.Module;
 import org.ironone.repository.ModuleRepository;
 
-
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,5 +36,17 @@ public class AttendanceRepository implements PanacheRepository<Attendance> {
 
     public List<Attendance> findByLectureId(int lectureId) {
         return find("lecture.lectureId = ?1", lectureId).list();
+    }
+
+    public Attendance findById(Long attendanceId) {
+        return find("attendanceId", attendanceId).firstResult();
+    }
+
+    public void updateAttendance(Long attendanceId, boolean attended, LocalDateTime markedAt) {
+        update("set attended = ?1, markedAt = ?2 where attendanceId = ?3", attended, markedAt, attendanceId);
+    }
+
+    public boolean deleteAttendance(Long attendanceId) {
+        return delete("attendanceId = ?1", attendanceId) > 0;
     }
 }

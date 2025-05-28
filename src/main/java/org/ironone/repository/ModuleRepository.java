@@ -44,4 +44,10 @@ public class ModuleRepository implements PanacheRepository<Module> {
     public void delete(String id) {
         delete("moduleId", id);
     }
+
+    public List<Module> findByCourseId(String id) {
+        return find("select distinct m from Module m join m.courses c where c.courseId = ?1", id).list();
+    }
+        
+
 }

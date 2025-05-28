@@ -6,8 +6,8 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.ironone.dto.AttendanceData;
-//import org. SnowdenService;
 import org.ironone.dto.MarkAttendanceDTO;
+import org.ironone.dto.UpdateAttendanceDTO;
 import org.ironone.entity.Attendance;
 import org.ironone.service.AttendanceService;
 
@@ -39,5 +39,29 @@ public class AttendanceResource {
     @Path("/lecture/{lectureId}")
     public List<Attendance> getAttendanceByLectureId(@PathParam("lectureId") int lectureId) {
         return attendanceService.getAttendanceByLectureId(lectureId);
+    }
+
+    @PUT
+    @Path("/{attendanceId}")
+    @Transactional
+    public Response updateAttendance(@PathParam("attendanceId") Long attendanceId, UpdateAttendanceDTO dto) {
+        try {
+            attendanceService.updateAttendance(attendanceId, dto.isAttended(), dto.getMarkedAt());
+            return Response.ok().build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
+        }
+    }
+
+    @DELETE
+    @Path("/{attendanceId}")
+    @Transactional
+    public Response deleteAttendance(@PathParam("attendanceId") Long attendanceId) {
+        try {
+            attendanceService.deleteAttendance(attendanceId);
+            return Response.ok().build();
+        } catch (IllegalArgumentException e) {
+            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
+        }
     }
 }

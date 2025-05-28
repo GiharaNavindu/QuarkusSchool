@@ -28,13 +28,17 @@ public class Lecture {
     private String venue;
 
     @Column(name = "Time", nullable = false)
-    @NotBlank(message = "Time is required")
-    private String time;
+    @NotNull(message = "Time is required")
+    private LocalDateTime time;
 
     @ManyToOne
-    @JoinColumn(name = "Lecturer")
+    @JoinColumn(name = "Lecturer_Id")
     @NotNull(message = "Lecturer is required")
     private Lecturer lecturer;
+
+
+
+
 
     @ManyToOne
     @JoinColumn(name = "Module_Id")

@@ -44,7 +44,7 @@ public class Student {
     private Integer age;
 
     @Column(name = "DOB")
-    private String dob;
+    private LocalDate dob;
 
     @Column(name = "Address")
     @Size(max = 255, message = "Address must be at most 255 characters")
@@ -68,4 +68,5 @@ public class Student {
     private List<Lecture> lectures;
 
     //private String userId;
+
 }

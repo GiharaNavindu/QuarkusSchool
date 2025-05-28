@@ -20,7 +20,7 @@ public class Enrolls {
     private Long enrollmentId;
 
     @Column(name = "Enrollment_Date")
-    private String enrollmentDate;
+    private LocalDate enrollmentDate;
 
     @ManyToOne
     @JoinColumn(name = "Student_Id")

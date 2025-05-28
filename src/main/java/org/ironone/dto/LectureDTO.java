@@ -4,14 +4,17 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class LectureDTO {
     private int lectureId;
 
     @Size(max = 100, message = "Venue must be at most 100 characters")
     private String venue;
 
-    @NotBlank(message = "Time is required")
-    private String time;
+    @NotNull(message = "Time is required")
+    private LocalDateTime time;
 
     @NotBlank(message = "Lecturer ID is required")
     private String lecturerId;
@@ -36,11 +39,11 @@ public class LectureDTO {
         this.venue = venue;
     }
 
-    public String getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 

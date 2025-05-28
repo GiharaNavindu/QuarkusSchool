@@ -47,7 +47,7 @@ public class LectureRepository implements PanacheRepository<Lecture> {
                     up.setLectureId(lecture.getLectureId());
                     up.setModuleName(lecture.getModule().getName());
                     up.setVenue(lecture.getVenue());
-                    up.setTime(lecture.getTime());
+                    up.setTime(String.valueOf(lecture.getTime()));
                     return up;
                 })
                 .collect(Collectors.toList());

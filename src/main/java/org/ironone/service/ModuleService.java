@@ -95,6 +95,13 @@ public class ModuleService {
         moduleRepository.delete(id);
     }
 
+    public List<ModuleDTO> getModuleByCourseId(String id) {
+        return moduleRepository.findByCourseId(id)
+                .stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
+    }
+
     public List<ModuleDTO> getModuleByLecturerId(String id) {
         return moduleRepository.findByLecturerId(id)
                 .stream()

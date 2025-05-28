@@ -77,4 +77,14 @@ public class ModuleResource {
         moduleService.assignModuleToCourse(moduleId, courseId);
         return Response.status(Response.Status.OK).build();
     }
+
+    @GET
+    @Path("/course")
+    @Transactional
+    public Response getModulesByCourseId(@QueryParam("courseId") String courseId) {
+        moduleService.getModuleByCourseId(courseId);
+        return Response.status(Response.Status.OK).build();
+    }
+
+
 }

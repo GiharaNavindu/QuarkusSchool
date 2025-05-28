@@ -34,4 +34,20 @@ public class AttendanceService {
     public List<Attendance> getAttendanceByLectureId(int lectureId) {
         return attendanceRepository.findByLectureId(lectureId);
     }
+
+    @Transactional
+    public void updateAttendance(Long attendanceId, boolean attended, LocalDateTime markedAt) {
+        Attendance attendance = attendanceRepository.findById(attendanceId);
+        if (attendance == null) {
+            throw new IllegalArgumentException("Attendance record not found");
+        }
+        attendanceRepository.updateAttendance(attendanceId, attended, markedAt);
+    }
+
+    @Transactional
+    public void deleteAttendance(Long attendanceId) {
+        if (!attendanceRepository.deleteAttendance(attendanceId)) {
+            throw new IllegalArgumentException("Attendance record not found");
+        }
+    }
 }

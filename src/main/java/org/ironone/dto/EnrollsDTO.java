@@ -2,15 +2,19 @@ package org.ironone.dto;
 
 import jakarta.validation.constraints.NotBlank;
 
+import java.time.LocalDate;
+
 public class EnrollsDTO {
     private Long enrollmentId;
-    private String enrollmentDate;
+    private LocalDate enrollmentDate;
 
     @NotBlank(message = "Student ID is required")
     private String studentId;
 
     @NotBlank(message = "Course ID is required")
     private String courseId;
+
+
 
     // Getters and Setters
     public Long getEnrollmentId() {
@@ -21,11 +25,11 @@ public class EnrollsDTO {
         this.enrollmentId = enrollmentId;
     }
 
-    public String getEnrollmentDate() {
+    public LocalDate getEnrollmentDate() {
         return enrollmentDate;
     }
 
-    public void setEnrollmentDate(String enrollmentDate) {
+    public void setEnrollmentDate(LocalDate enrollmentDate) {
         this.enrollmentDate = enrollmentDate;
     }
 

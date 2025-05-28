@@ -3,6 +3,9 @@ package org.ironone.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import net.bytebuddy.asm.Advice;
+
+import java.time.LocalDate;
 
 public class LecturerDTO {
     @NotBlank(message = "Lecturer ID is required")
@@ -23,7 +26,7 @@ public class LecturerDTO {
     private String email;
 
     private Integer age;
-    private String dob;
+    private LocalDate dob;
     private String degree;
 
     // Getters and Setters
@@ -67,11 +70,11 @@ public class LecturerDTO {
         this.age = age;
     }
 
-    public String getDob() {
+    public LocalDate getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(LocalDate dob) {
         this.dob = dob;
     }
 

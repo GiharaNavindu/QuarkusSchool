@@ -44,7 +44,7 @@ public class Lecturer {
     private Integer age;
 
     @Column(name = "DOB")
-    private String dob;
+    private LocalDate dob;
 
     @Column(name = "Degree")
     @Size(max = 100, message = "Degree must be at most 100 characters")
