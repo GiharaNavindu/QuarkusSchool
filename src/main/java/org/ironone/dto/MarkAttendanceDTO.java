@@ -4,8 +4,8 @@ import org.ironone.entity.Lecture;
 import org.ironone.entity.Student;
 
 public class MarkAttendanceDTO {
-    private Student student;
-    private Lecture lecture;
+    private Student student; // Only include studentId in JSON payload
+    private Lecture lecture; // Only include lectureId in JSON payload
     private boolean attended;
 
     // Getters and Setters

@@ -13,6 +13,8 @@ public class LectureDTO {
     @Size(max = 100, message = "Venue must be at most 100 characters")
     private String venue;
 
+
+    //changed to localdatetime
     @NotNull(message = "Time is required")
     private LocalDateTime time;
 

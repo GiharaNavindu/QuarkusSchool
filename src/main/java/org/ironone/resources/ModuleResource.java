@@ -82,8 +82,13 @@ public class ModuleResource {
     @Path("/course")
     @Transactional
     public Response getModulesByCourseId(@QueryParam("courseId") String courseId) {
-        moduleService.getModuleByCourseId(courseId);
-        return Response.status(Response.Status.OK).build();
+        if (courseId == null || courseId.trim().isEmpty()) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("courseId is required")
+                    .build();
+        }
+        List<ModuleDTO> modules = moduleService.getModuleByCourseId(courseId);
+        return Response.status(Response.Status.OK).entity(modules).build();
     }
 
 
